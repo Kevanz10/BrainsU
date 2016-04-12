@@ -1,0 +1,20 @@
+<div class="text-center">
+	<%= form_for (@quiz) do |f| %>
+	<p>
+		<%= f.label :Name %> <br />
+		<%= f.text_field :Name %>
+	</p>
+	<%= f.fields_for :questions do |question| %>
+		<p>
+			<%=question.label :content, "Question" %> <br />
+			<%= question.text_area :content, :rows => 3 %> 
+		</p>
+	<% end %>
+	<p><%= f.submit "submit" %></p>
+<% end %>
+</div>
+
+
+
+
+	
