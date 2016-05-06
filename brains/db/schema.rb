@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504042904) do
+ActiveRecord::Schema.define(version: 20160506185021) do
 
   create_table "options", force: :cascade do |t|
     t.text     "respuesta"
@@ -23,9 +23,13 @@ ActiveRecord::Schema.define(version: 20160504042904) do
   create_table "questions", force: :cascade do |t|
     t.integer  "quiz_id"
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "correcta"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "quizzes", force: :cascade do |t|

@@ -2,11 +2,19 @@
 	<div class="from-group">
 		<%= q.label :content %>
   	<%= q.text_area :content, :class => "form-control" %>	
-	</div>	     	
+	</div>	    
+		<div class="from-group">
+				<% if  q.object.image.present? %>
+		    		<%= image_tag q.object.image.url(:thumb) %> 
+		    <%end%>
+				<%= q.file_field :image%>	
+		</div>
+	
  		
 	<div class="nested-level-2">
 		<ul class="options-container list-unstyled">
 			<%= q.nested_fields_for :options, new_item_index: 'new_option_item', html: { class: "options-form" } do |o| %>
+				
 				<% css_classes = "" %>
 				<% if o.object.id? %>
 					<% css_classes = 'highlight' if o.object.id == q.object.correcta %>
