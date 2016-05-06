@@ -1,22 +1,29 @@
 // Place all the styles related to the Quizzes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//class for the correct answer
 .highlight {
-	border: 2px solid blue;
+	background-color:rgb(46,204,113);
 }
 
+//Styles for elements such as content
 .divisor{
 	border: 2px solid #DDDDDD;
 	padding:15px;
+	margin-bottom:1px;
 }
 
+//Styles for elements such as answers
 .divisor2{
 	border: 2px solid #DDDDDD;
-	padding:30px;
-	list-style:none;
-	margin: 13px 2px;
+	padding:19px;
+	margin: 12px 0px;
+	list-style: none;
+
 }
 
+//for spacing the buttoms (remove, correct) on the answer section.
 .paddingbuttons{
 	padding:5px 10px;
 	font-size: 12px;
@@ -24,15 +31,28 @@
 	margin: 8px 1px;
 }
 
-.contentmargin{
-	margin: -8px -12px;
+//class for removing the padding of the list
+.questions-container{
+	padding:0;
 }
 
-.spacebutton{
- border: 1px solid #ADADAD ;
- padding: 6px 12px;
+//remove the style of the list
+.question{
+	list-style:none;
 }
 
-.remove-add {
-  font-size: 12px;
+//space for elements inside the button (icons and words)
+.question-remove::before, .option-add::before, .questionadd::before{
+	margin-right: 4px;
+}
+
+//giving the submit section of the form some style.
+.submitborder{
+	border-top:1px solid rgb(221,221,221);
+	margin:25px 0px;
+}
+
+//buttom submit, giving it some separation from the grey line.
+.bsubmit{
+	margin-top:20px;
 }

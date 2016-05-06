@@ -30,9 +30,9 @@ $(document).ready(function(e) {
 		debugger;
 		option_id = $(this).siblings('.option_id').val()
 		option_id = parseInt(option_id)
-		$(this).closest('.question').find('.highlight').removeClass('highlight')
+		$(this).parent().siblings('.highlight').removeClass('highlight')
 		$(this).parent().siblings('.correct-option').val(option_id)
-		$(this).parent().find('.respuesta').addClass('highlight')
+		$(this).parent().addClass('highlight')
 		e.preventDefault();
 	});
 });

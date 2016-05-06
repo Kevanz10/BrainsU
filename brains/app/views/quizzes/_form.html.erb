@@ -19,16 +19,19 @@
 			</div>
 		
 			<h2>Questions</h2>
-			<ol class="questions-container divisor2">	
-			  <%= f.nested_fields_for :questions, render_template: false, new_item_index: 'new_question_item' do |q| %>
-			  	<% render 'options_fields', q: q %>
-		    <% end %>
-			</ol>
-			<%= nested_fields_templates %>
-			<a href="#" class="question-add">Add Question</a>
+			<div class="">
+				<ul class="questions-container">	
+				  <%= f.nested_fields_for :questions, render_template: false, new_item_index: 'new_question_item' do |q| %>
+				  	<% render 'options_fields', q: q %>
+			    <% end %>
+				</ul>
+			</div>
 			
-			<div class="actions">
-				<p><%= f.submit "submit" %></p>
+			<%= nested_fields_templates %>
+			<button type="button" href="#" class="question-add btn btn-default fa fa-plus">Add Question</button>
+			
+			<div class="actions submitborder">
+				<p><%= f.submit "Create a Quizz", class: 'bsubmit btn btn-primary' %></p>
 			</div>
 
 	<% end %>
