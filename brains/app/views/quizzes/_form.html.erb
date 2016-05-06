@@ -1,20 +1,38 @@
-<div class="text-center">
-	<%= form_for (@quiz) do |f| %>
-	<p>
-		<%= f.label :Name %> <br />
-		<%= f.text_field :Name %>
-	</p>
-	<%= f.fields_for :questions do |question| %>
-		<p>
-			<%=question.label :content, "Question" %> <br />
-			<%= question.text_area :content, :rows => 3 %> 
-		</p>
+<div class="container">
+	<div class="">
+		<%= form_for (@quiz), html: {class: "quiz-form"} do |f| %>
+			<% if @quiz.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+		      <ul>
+		      <% @quiz.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+			<div class="form-group divisor">
+				<%= f.label :Name %> <br/>
+				<%= f.text_field :Name, class: 'form-control' %>
+			</div>
+		
+			<h2>Questions</h2>
+			<ol class="questions-container divisor2">	
+			  <%= f.nested_fields_for :questions, render_template: false, new_item_index: 'new_question_item' do |q| %>
+			  	<% render 'options_fields', q: q %>
+		    <% end %>
+			</ol>
+			<%= nested_fields_templates %>
+			<a href="#" class="question-add">Add Question</a>
+			
+			<div class="actions">
+				<p><%= f.submit "submit" %></p>
+			</div>
+
 	<% end %>
-	<p><%= f.submit "submit" %></p>
-<% end %>
+	</div>
 </div>
-
-
-
 
 	

@@ -1,0 +1,39 @@
+<li class="question divisor2">
+	<div class="from-group">
+		<%= q.label :content %>
+  	<%= q.text_area :content, :class => "form-control" %>	
+	</div>	     	
+ 		
+	<div class="nested-level-2 row">
+		<ul class="options-container list-unstyled">
+			<%= q.nested_fields_for :options, new_item_index: 'new_option_item', html: { class: "options-form" } do |o| %>
+				<% css_classes = "" %>
+				<% if o.object.id? %>
+					<% css_classes = 'highlight' if o.object.id == q.object.correcta %>
+				<% end %>
+				<li class="option">
+					<div class="from-group">
+						<%= o.label :respuesta %>
+						<%= o.text_field :respuesta, :class => "form-control respuesta  #{css_classes}" %>
+					</div>
+					<button type= "button" class="option-remove fa fa-trash paddingbuttons" aria-hidden="true"></button>
+					<button type= "button" class ="option-correct fa fa-check paddingbuttons"></button>
+					
+					<%= o.hidden_field :id, :class => "option_id" %>
+				  <%= o.hidden_field :_destroy %>
+				 
+				</li>
+			<% end %>
+			<%= q.hidden_field :correcta, :class => "correct-option"%>
+
+		</ul>
+		<a href="#" class="option-add btn btn-default">Add answer</a>
+		<a href="#" class="question-remove btn btn-default">Remove Question</a>
+	</div>
+  
+  <%= q.hidden_field :id %>
+  <%= q.hidden_field :_destroy %>
+
+</li>
+<br>
+

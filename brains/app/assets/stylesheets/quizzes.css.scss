@@ -1,0 +1,38 @@
+// Place all the styles related to the Quizzes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.highlight {
+	border: 2px solid blue;
+}
+
+.divisor{
+	border: 2px solid #DDDDDD;
+	padding:15px;
+}
+
+.divisor2{
+	border: 2px solid #DDDDDD;
+	padding:30px;
+	list-style:none;
+	margin: 13px 2px;
+}
+
+.paddingbuttons{
+	padding:5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	margin: 8px 1px;
+}
+
+.contentmargin{
+	margin: -8px -12px;
+}
+
+.spacebutton{
+ border: 1px solid #ADADAD ;
+ padding: 6px 12px;
+}
+
+.remove-add {
+  font-size: 12px;
+}

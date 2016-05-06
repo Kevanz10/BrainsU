@@ -5,11 +5,11 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
-    3.times {@quiz.questions.new}
+    
   end
 
   def edit
-     @quizz= Quiz.find(params[:id])
+    @quiz = Quiz.find(params[:id])
   end
 
   def show
@@ -27,17 +27,35 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new(quiz_params)
-    @quiz.save!
-    redirect_to quizzes_path
+
+    respond_to do |format|
+      if @quiz.save
+        format.html { redirect_to @quiz, notice: 'quiz was successfully created.' }
+        format.json { render json: @quiz, status: :created, location: @quiz }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @quiz.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
 	 	@quiz = Quiz.find(params[:id])
-    @quiz.update(quiz_params)
-    redirect_to quizzes_path
+    
+    respond_to do |format|
+      if @quiz.update_attributes(quiz_params)
+        format.html { redirect_to quizzes_path, notice: 'quiz was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @quiz.errors, status: :unprocessable_entity }
+      end
+    end
   end
  
   def quiz_params
-		params.require(:quiz).permit(:Name, questions_attributes: [:content] )
+		params.require(:quiz).permit(:Name, 
+                                questions_attributes: [:id,:content, :correcta, :quiz_id, :_destroy,
+                                                      options_attributes: [:id, :respuesta, :question_id, :_destroy]] )
   end
 end

@@ -1,0 +1,8 @@
+I"y(function() {
+  Jquery(function($) {
+    debugger;
+    return $('#quiz_form').nestedFields();
+  });
+
+}).call(this);
+:ET

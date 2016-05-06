@@ -11,16 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require jquery.nested-fields
 //= require turbolinks
+//= require_tree .
 
-$(document).ready(function () {
-
-	$("#next_button").click(function(){
-		$.post( "/quizzes/23/questions/6", function( data ) {
-		  $( ".result" ).html( data );
-		});	
-	})
-
-});
