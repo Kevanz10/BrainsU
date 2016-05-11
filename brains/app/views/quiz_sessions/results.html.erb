@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Quiz</h1>
+
+  <p><strong>Results:</strong>
+    You got <%= @correct %> out of <%= @possible %>!</p> 
+
+  <%= link_to "Try again?", { :controller => "quiz_sessions", :action => "start_over" }, :method => "post" %>
+</div>

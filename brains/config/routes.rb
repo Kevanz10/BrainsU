@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  # resources :quiz_sessions, only: [:create, :destroy]
   resources :quizzes do
-    resources :questions do
-      post :next_question, on: :collection
-    end
+    match '/questions', :to => 'quiz_sessions#questions', as: 'questions', via: :get
+    match '/results', :to => 'quiz_sessions#results', as: 'results', via: :get
+    post  '/check' => 'quiz_sessions#check' 
+    post  '/start_over' => 'quiz_sessions#start_over' 
   end
 
   root "quizzes#index"
