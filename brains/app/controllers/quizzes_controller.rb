@@ -1,22 +1,18 @@
 class QuizzesController < ApplicationController
+  before_action :set_quiz, only: [:edit, :show]
+
   def index
    @quizzes= Quiz.all
   end
 
   def new
     @quiz = Quiz.new
-    
   end
 
   def edit
-    @quiz = Quiz.find(params[:id])
   end
 
   def show
-  	@quiz= Quiz.find(params[:id])
-    if @quiz.questions.present?
-      @first_question_url = quiz_question_path(quiz_id: @quiz.id, id: @quiz.questions.first)
-    end
   end
 
   def destroy
@@ -52,7 +48,13 @@ class QuizzesController < ApplicationController
       end
     end
   end
+
+  private
  
+  def set_quiz
+    @quiz = Quiz.find(params[:id])
+  end
+
   def quiz_params
 		params.require(:quiz).permit(:Name, 
                                 questions_attributes: [:id,:content, :correcta, :quiz_id, :image, :_destroy,

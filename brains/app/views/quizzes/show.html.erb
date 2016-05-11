@@ -1,3 +1,5 @@
-
-
-<a href="<%= @first_question_url %>">Empezar</a>
+<div class="container">
+  <h1> <%= @quiz.Name %> Quiz</h1>
+ 
+  <%= link_to "Empezar Quiz", quiz_questions_path(@quiz), :class => "btn btn-success" %>
+</div>
