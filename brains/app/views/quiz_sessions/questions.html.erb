@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Quiz</h1>
 
-  <p><%= @question.content %></p>
+  <p>Pregunta: <%= @question.content %></p>
 
   <%= form_tag quiz_check_path(@quiz) do %>
     <% @question.options.each do |answer| %>
@@ -12,4 +12,6 @@
     <% end %>
     <%= submit_tag "Answer", :class => "btn btn-primary" %>
   <% end %>  
+
+
 </div>

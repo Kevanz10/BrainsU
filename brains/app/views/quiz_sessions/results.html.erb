@@ -4,5 +4,31 @@
   <p><strong>Results:</strong>
     You got <%= @correct %> out of <%= @possible %>!</p> 
 
-  <%= link_to "Try again?", { :controller => "quiz_sessions", :action => "start_over" }, :method => "post" %>
+
+	<div>
+		<%session[:test].each do |p| %>
+
+		<%= @quiz.questions.find(p["pregunta"]).content%> 
+		
+		Tu respuesta fue:<%= @quiz.questions.find(p["pregunta"]).options.find(p["restudiante"]).respuesta%> 
+		<br>
+		----------
+		<br>
+		<%end%>
+	
+	</div>
+
+
+
+	
+
+	<br>
+  <div>
+  	<%= link_to "Try again?", { :controller => "quiz_sessions", :action => "start_over" }, :method => "post" %>
+  </div>		
+
+
+  
+
+  
 </div>
